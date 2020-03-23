@@ -1,4 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="true" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="CardEntity" representedClassName="CardEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="pinyin" optional="YES" attributeType="String"/>
+        <attribute name="translation" optional="YES" attributeType="String"/>
+        <attribute name="word" optional="YES" attributeType="String"/>
+        <relationship name="list" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ListEntity4" inverseName="cards" inverseEntity="ListEntity4"/>
+        <relationship name="section" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SectionEntity4" inverseName="cards" inverseEntity="SectionEntity4"/>
+    </entity>
+    <entity name="ListEntity4" representedClassName="ListEntity4" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="wordCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="cards" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CardEntity" inverseName="list" inverseEntity="CardEntity"/>
+        <relationship name="sections" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SectionEntity4" inverseName="list" inverseEntity="SectionEntity4"/>
+    </entity>
+    <entity name="SectionEntity4" representedClassName="SectionEntity4" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="wordCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="cards" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CardEntity" inverseName="section" inverseEntity="CardEntity"/>
+        <relationship name="list" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ListEntity4" inverseName="sections" inverseEntity="ListEntity4"/>
+    </entity>
+    <elements>
+        <element name="CardEntity" positionX="-45" positionY="27" width="128" height="133"/>
+        <element name="ListEntity4" positionX="-63" positionY="-18" width="128" height="118"/>
+        <element name="SectionEntity4" positionX="-63" positionY="0" width="128" height="118"/>
+    </elements>
 </model>
